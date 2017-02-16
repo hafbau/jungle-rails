@@ -4,24 +4,9 @@
     <h1>Login</h1>
   </header>
 
-  <div class="well">
-    <%= link_to 'Login', [:sessions], class: 'btn btn-info' %>
-  </div>
-
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for [@session] do |form| %>
-
-        <% if form.object.errors.any? %>
-          <div class="alert alert-danger">
-            <strong>The following errors prevented saving:</strong>
-            <ul>
-              <% form.object.errors.full_messages.each do |error| %>
-                <li><%= error %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+      <%= form_for :session, url: sessions_path do |form| %>
 
         <div class="form-group">
           <%= form.label :email %>
