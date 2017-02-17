@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_action :authenticate_user
 
   private
 
@@ -17,6 +18,12 @@ class ApplicationController < ActionController::Base
       expires: 10.days.from_now
     }
     cookies[:cart]
+  end
+
+
+  def authenticate_user
+    usr_id = session[:user_id]
+    @user = User.find(usr_id) if usr_id
   end
 
 end

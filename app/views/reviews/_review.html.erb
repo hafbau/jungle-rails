@@ -1,0 +1,15 @@
+<% review = @object[:review] %>
+<% current_user = @object[:current_user] %>
+<dl class=review>
+  <dt>Rating: <%= review.rating %></dt>
+  <dd><%= review.description %></dd>
+  <dd>by <%= review.user.first_name %> at 
+    <time datetime=<%= review.created_at %> >
+    <%= review.created_at %></time>
+  </dd>
+  <% if current_user && (current_user.id == review.user_id) %>
+    <dd>
+      <%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+    </dd>
+  <% end %>
+</dl>

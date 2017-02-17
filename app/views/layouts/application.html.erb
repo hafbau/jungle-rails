@@ -12,7 +12,17 @@
 
   <main class="container">
     <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <div class="alert alert-<%= message_type %>">
+      <% if message.kind_of?(Array) %>
+        <ul>
+        <% message.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      <% else %>
+        <%= message %>
+      <% end %>  
+      </div>
     <% end %>
     <%= yield %>
   </main>

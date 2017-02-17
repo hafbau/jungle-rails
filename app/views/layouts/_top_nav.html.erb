@@ -27,8 +27,12 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'register', [:new, :user] %></li>
-        <li><%= link_to 'login', [:new, :session] %></li>
+        <% if @user %>
+          <li><%= link_to 'logout', session_path(@user.id), method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'register', [:new, :user] %></li>
+          <li><%= link_to 'login', [:new, :session] %></li>
+        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 

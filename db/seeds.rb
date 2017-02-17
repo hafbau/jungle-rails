@@ -133,4 +133,147 @@ cat3.products.create!({
 })
 
 
+# USERS
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.free_email,
+  password: '123456',
+  password_confirmation: '123456'
+})
+
+
+# REVIEWS
+
+pro1 = Product.find(1)
+pro2 = Product.find(2)
+pro3 = Product.find(3)
+pro4 = Product.find(4)
+pro5 = Product.find(5)
+
+usr5 = User.find(5)
+usr6 = User.find(6)
+usr7 = User.find(7)
+
+pro1.reviews.create!({
+  user_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: [*1..5].sample
+})
+
+pro2.reviews.create!({
+  user_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: [*1..5].sample
+})
+
+pro3.reviews.create!({
+  user_id: 2,
+  description: Faker::Hipster.paragraph(2),
+  rating: [*1..5].sample
+})
+
+pro4.reviews.create!({
+  user_id: 4,
+  description: Faker::Hipster.paragraph(2),
+  rating: [*1..5].sample
+})
+
+pro5.reviews.create!({
+  user_id: 3,
+  description: Faker::Hipster.paragraph(2),
+  rating: [*1..5].sample
+})
+
+usr5.reviews.create!({
+  product_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: [*1..5].sample
+})
+
+usr6.reviews.create!({
+  product_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: [*1..5].sample
+})
+
+usr7.reviews.create!({
+  product_id: 2,
+  description: Faker::Hipster.paragraph(2),
+  rating: [*1..5].sample
+})
+
 puts "DONE!"
