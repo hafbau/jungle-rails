@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.aunthenticate_with_credentials(session_params[:email], session_params[:password]) #User.find_by(email: session_params[:email].downcase)
+    user = User.authenticate_with_credentials(session_params[:email], session_params[:password]) #User.find_by(email: session_params[:email].downcase)
     if user# && user.authenticate(session_params[:password])
       session[:user_id] = user.id
       redirect_to :root
