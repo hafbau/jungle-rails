@@ -27,7 +27,8 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if @user %>
+        <% if @user && @user.id %>
+          <li><a href="#0"><em>logged in as <strong><%= @user.first_name %></strong></em></a></li>
           <li><%= link_to 'logout', session_path(@user.id), method: :delete %></li>
         <% else %>
           <li><%= link_to 'register', [:new, :user] %></li>

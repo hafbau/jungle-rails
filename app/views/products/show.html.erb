@@ -27,20 +27,19 @@
     </div>
 
     <div class="row reviews">
+      <header class='reviews-header'>
+        <h2><em>Product Reviews</em></h2>
+        <h3>
+          <input type="number" name="rating" class="rating" value="<%= avg_by_child_hash_key(@product.reviews, :rating) %>" data-readonly/>
+          <span>in <%= @product.reviews.size %> reviews</span>
+        </h3>
+      </header>
       <% if @user %>
+        <h3>Please give us your review of this product</h3>
         <%= form_for [@product, @review] do |form| %>
           <div class="form-group">
-            <%= form.label :rating %>
-            <%= form.select(
-              :rating,
-              options_for_select([
-                                  ['1', 1],
-                                  ['2', 2],
-                                  ['3', 3],
-                                  ['4', 4],
-                                  ['5', 5],
-                                ], 5)
-            ) %>
+            <%= form.label :rating, 'Rate this' %>
+            <%= form.number_field :rating, class: 'rating', value: 0 %>
           </div>
 
           <div class="form-group">
@@ -49,7 +48,7 @@
           </div>
 
 
-          <%= form.submit 'Rate', class: 'btn btn-primary' %>
+          <%= form.submit 'Post your review', class: 'btn btn-primary' %>
         <% end %>
       <% end %>
       <% @reviews = @product.reviews.sort { |a,b| b.created_at <=> a.created_at }. each do |review| %>
