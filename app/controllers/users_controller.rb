@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.email.downcase!
     if @user.save
-      session[:id] = @user.id
+      session[:user_id] = @user.id
       flash[:success] = "#{@user.first_name.capitalize}, you are welcome to Jungle!"
       redirect_to :root
     else
