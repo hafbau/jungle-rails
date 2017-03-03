@@ -28,17 +28,19 @@ class OrdersController < ApplicationController
   end
 
   def perform_stripe_charge
+    buyer = @user ? @user.first_name : "Anonymous"
     Stripe::Charge.create(
       source:      params[:stripeToken],
       amount:      cart_total, # in cents
-      description: "Khurram Virani's Jungle Order",
+      description: "#{buyer}'s Jungle Order",
       currency:    'cad'
     )
   end
 
   def create_order(stripe_charge)
+    order_email = @user ? @user.email : params[:stripeEmail]
     order = Order.new(
-      email: @user ? @user.email : params[:stripeEmail],
+      email: order_email,
       total_cents: cart_total,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
@@ -53,7 +55,7 @@ class OrdersController < ApplicationController
         )
       end
     end
-    order.save
+    order.save!
     order
   end
 

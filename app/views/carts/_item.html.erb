@@ -21,8 +21,10 @@
         -
       <% end %>
       <%= quantity %>
-      <%= link_to add_item_cart_path(product_id: product_id), class: 'btn btn-xs btn-success', method: :put do %>
-        +
+      <% if (product.quantity > quantity) %>
+        <%= link_to add_item_cart_path(product_id: product_id), class: 'btn btn-xs btn-success', method: :put do %>
+          +
+        <% end %>
       <% end %>
     </td>
     <td>

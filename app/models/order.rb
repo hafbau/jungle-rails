@@ -7,14 +7,15 @@ class Order < ActiveRecord::Base
 
   validates :stripe_charge_id, presence: true
 
-  before_create :check_n_update_quantities
+  before_save :check_n_update_quantities
 
   private
 
   def check_n_update_quantities
     self.line_items.each do |item|
       curr_quantity = item.product.quantity - item.quantity
-      if curr_quantity < 0
+
+      if (curr_quantity < 0)
         errors[:base] << "Sorry, there are only #{item.product.quantity}#{item.product.name} in stock."
         false
       else
